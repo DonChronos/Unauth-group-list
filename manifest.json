@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+  "name": "Unauth Group List",
+  "version": "1.0",
+
+  "description": "Adds a list of groups to the header.",
+
+  "icons": {
+    "48": "icon.svg",
+    "96": "icon.svg"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.vk.com/*"],
+      "js": ["group.js"]
+    }
+  ],
+
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+
+  "permissions": ["storage", "activeTab"],
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "addon@example.com"
+    }
+  }
+}
