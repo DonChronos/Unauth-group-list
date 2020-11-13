@@ -13,7 +13,8 @@
   "content_scripts": [
     {
       "matches": ["*://*.vk.com/*"],
-      "js": ["group.js"]
+      "js": ["group.js"],
+      "css": ["dropdown.css"]
     }
   ],
 
@@ -22,7 +23,8 @@
     "open_in_tab": true
   },
 
-  "permissions": ["storage", "activeTab"],
+  "permissions": ["storage", "activeTab", "tabs"],
+
 
   "browser_specific_settings": {
     "gecko": {
