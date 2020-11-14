@@ -1,12 +1,19 @@
 .dropdown-menu {
+  position: fixed !important;
+  display: inline-block;
+  z-index: 10;
+  right: 15%;
+}
+
+.dropdown-btn {
 width: 48px;
 height: 48px;
 background-color: gray;
 border-radius: 100%;
-position: relative;
+border: 1px solid #8d9399;
 }
 
-.dropdown::before {
+.dropdown-btn::before {
 content: "";
 position: absolute;
 top: 6px;
@@ -24,5 +31,19 @@ display: block;
 .dropdown-content {
   display: none;
   position: absolute;
-  max-width: 48px;
+  min-width: 100px;
+  max-height: 196px;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  border-radius: 10%;
+  background-color: white;
+  border: 1px solid gray;
+}
+
+.dropdown-content a {
+  display: block;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  border-bottom: 1px solid black;
 }
