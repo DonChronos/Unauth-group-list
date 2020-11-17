@@ -2,24 +2,20 @@ function onError(error) {
   console.log(`Error: ${error}`);
 }
 console.log('extension code start')
-// use activeTab permission to put buttons on pages
-// which onclick add tab.url to storage.local
+let urlMiddleWord = window.location.hostname.split('.').reverse()[1];
+
 function onGot(item) {
   let result = [];
   console.log(item);
-  console.log(header);
-  console.log(window.location.hostname);
-  let hostname = window.location.hostname;
+  console.log(urlMiddleWord);
   let menu = document.createElement("div");
   console.log(menu);
   menu.classList.add("dropdown-menu");
-  // refactor next 2 lines - put document.querySelector inside if-block;
-  const header = (document.querySelector('.HeaderNav')) ? document.querySelector('.HeaderNav')
-  : document.body;
-  if (document.querySelector('HeaderNav')) {
-    header.appendChild(menu);
+  if (document.querySelector('.HeaderNav')) {
+    console.log('1');
+    document.querySelector('.HeaderNav').appendChild(menu);
   } else {
-    header.prepend(menu);
+    document.body.prepend(menu);
   }
   let btn = document.createElement("button");
   btn.classList.add("dropdown-btn");
@@ -27,15 +23,15 @@ function onGot(item) {
   let content = document.createElement("div");
   content.classList.add("dropdown-content");
   menu.appendChild(content);
-  for (let i = 0; i < item.vk.length; i++) {
+  for (let i = 0; i < item[urlMiddleWord].length; i++) {
     console.log('loop')
-    let href = item.vk[i];
+    let href = item[urlMiddleWord][i];
     let link = document.createElement("a");
-    link.appendChild(document.createTextNode(item.vk[i]));
+    link.appendChild(document.createTextNode(item[urlMiddleWord][i]));
     link.href = href;
     content.appendChild(link);
   }
 }
 
-let getting = browser.storage.local.get("vk");
+let getting = browser.storage.local.get(urlMiddleWord);
 getting.then(onGot, onError);
