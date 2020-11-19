@@ -23,7 +23,7 @@
     "open_in_tab": true
   },
 
-  "permissions": ["storage", "activeTab", "tabs"],
+  "permissions": ["storage"],
 
 
   "browser_specific_settings": {
